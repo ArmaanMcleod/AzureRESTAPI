@@ -23,7 +23,7 @@ The full guide can be found at [Azure REST API Reference](https://docs.microsoft
     {
         "tenantId": "<TENANT ID>",
         "appId": "<APPLICATION ID>",
-        "secret": "<PASSWORD>",
+        "password": "<PASSWORD>",
         "subscriptionId": "<SUBSCRIPTION ID>"
     }
     ```

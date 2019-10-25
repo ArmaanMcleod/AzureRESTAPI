@@ -28,7 +28,7 @@ $body = @{
     grant_type = "client_credentials";
     resource = "https://management.core.windows.net/";
     client_id = $authority.appId;
-    client_secret = $authority.secret;
+    client_secret = $authority.password;
 }
 
 # POST request to get auth token
@@ -61,7 +61,7 @@ $body = @{
 # PUT request to REST api
 # Use PUT to ensure overwriting of existing data
 try {
-    Invoke-WebRequest `
+    Invoke-RestMethod `
         -Uri $resourceUri `
         -Headers $headers `
         -ContentType "application/json" `

@@ -27,7 +27,7 @@ $body = @{
     grant_type = "client_credentials";
     resource = "https://management.core.windows.net/";
     client_id = $authority.appId;
-    client_secret = $authority.secret;
+    client_secret = $authority.password;
 }
 
 # POST request to get auth token
@@ -52,7 +52,7 @@ $headers = @{
 
 # HEAD request to REST api
 try {
-    Invoke-WebRequest `
+    Invoke-RestMethod `
         -Uri $resourceUri `
         -Headers $headers `
         -Method Head
