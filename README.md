@@ -2,18 +2,34 @@
 
 PowerShell scripts to test out HTTP methods GET, POST, PUT, DELETE and HEAD  with Azure REST API.
 
+The full guide can be found at [Azure REST API Reference](https://docs.microsoft.com/en-us/rest/api/azure/).
+
 ## Authentication
 
-1. Set up Azure AD authentication with a registered app with [Authorize access to Azure Active Directory web applications using the OAuth 2.0 code grant flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-protocols-oauth-code). This is needed to grant access tokens to accessing the REST API. 
+1. Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) and login to your Azure account with the following command:
 
-2. Create a `azureADAuth.json` file to hold your registered app *tenant id*, *application id*, *secret* and *subscription id*:
-```
-{
-    "tenantId": "<TENANT ID>",
-    "appId": "<APPLICATION ID>",
-    "secret": "<SECRET KEY>",
-    "subscriptionId": "<SUBSCRIPTION ID>"
-}
-```
+    `PS C:\> az login`
 
-Now you can run the PowerShell scripts in the `scripts` folder and see what happens. 
+2. Set your active subscription with:
+
+    `PS C:\> az account set --subscription "<YOUR SUBSCRIPTION NAME>"`
+
+3. Create a Service Principal:
+
+    `PS C:\> az ad sp create-for-rbac -n "<YOUR SERVICE PRINCIPAL NAME>"`
+
+4. Create a `azureADAuth.json` file to insert *tenant id*, *application id*, *password* and *subscription id* from Step 3:
+    ```
+    {
+        "tenantId": "<TENANT ID>",
+        "appId": "<APPLICATION ID>",
+        "secret": "<PASSWORD>",
+        "subscriptionId": "<SUBSCRIPTION ID>"
+    }
+    ```
+
+## Testing
+
+You can now run the scripts inside the `scripts` folder. 
+
+    

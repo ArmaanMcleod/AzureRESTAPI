@@ -5,6 +5,7 @@ $resourceGroupName = "myResourceGroup"
 $parent = Test-Path -Path "..\azureADAuth.json"
 $current = Test-Path -Path "azureADAuth.json"
 
+# Exit when file doesn't exist
 if (-not $parent -and -not $current) {
     Write-Error "Missing azureADAuth file from directory"
     exit
